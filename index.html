@@ -1,40 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>IND.AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: white;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>IND.AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    header {
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0f;
+  color: white;
+  text-align: center;
+}
 
-    .credits {
-      background: #151520;
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
+/* HEADER */
+header {
+  padding: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-    .main-box {
-      margin: 20px auto;
-      max-width: 600px;
-    }
+/* HERO */
+.hero {
+  margin-top: 20px;
+  font-size: 22px;
+  color: #aaa;
+}
 
+.typing {
+  color: #8f44fd;
+  font-weight: bold;
+}
+
+/* CREDITS */
+.credits {
+  background: #151520;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+
+/* INPUT */
+input {
+  width: 80%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+/* BUTTONS */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+button {
+  padding: 20px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #6a5cff, #8f44fd);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* RESULT BOX */
+.result {
+  margin-top: 20px;
+  padding: 20px;
+  display: none;
+}
+
+.fake-box {
+  background: #151520;
+  padding: 30px;
+  border-radius: 15px;
+  animation: fadeIn 1s ease;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+
+</head>
+
+<body>
+
+<header>IND.AI</header>
+
+<div class="hero">
+  Create <span class="typing" id="typing"></span>
+</div>
+
+<div class="credits">🔥 5 Free Credits Left</div>
+
+<input type="text" placeholder="Aaj kya banana hai?">
+
+<div class="buttons">
+  <button onclick="generate()">🎨 Image</button>
+  <button onclick="generate()">🎬 Video</button>
+  <button onclick="generate()">🌐 Website</button>
+  <button onclick="generate()">🤖 Ask AI</button>
+</div>
+
+<div class="result" id="result">
+  <div class="fake-box">
+    ⚡ AI is generating your result... <br><br>
+    🎉 Done! (Preview coming soon)
+  </div>
+</div>
+
+<footer>
+  👤 Shrikunj Gondaliya <br>
+  📧 shrigondaliya@gmail.com <br>
+  📱 +91 7861011533 <br><br>
+  © 2026 IND.AI
+</footer>
+
+<script>
+// typing animation
+const words = ["Images", "Videos", "Websites", "Logos"];
+let i = 0, j = 0, current = "", isDeleting = false;
+
+function type() {
+  current = words[i];
+  document.getElementById("typing").innerText = current.substring(0, j);
+
+  if (!isDeleting && j < current.length) {
+    j++;
+  } else if (isDeleting && j > 0) {
+    j--;
+  } else {
+    isDeleting = !isDeleting;
+    if (!isDeleting) i = (i + 1) % words.length;
+  }
+  setTimeout(type, 100);
+}
+type();
+
+// fake generate animation
+function generate() {
+  document.getElementById("result").style.display = "block";
+}
+</script>
+
+</body>
+</html>
     input {
       width: 90%;
       padding: 15px;
