@@ -133,8 +133,8 @@ footer {
 
 <footer>
   👤 Shrikunj Gondaliya <br>
-  📧 shrigondaliya@gmail.com <br>
-  📱 +91 7861011533 <br><br>
+  📧 yourmail@gmail.com <br>
+  📱 +91 0000000000 <br><br>
   © 2026 IND.AI
 </footer>
 
@@ -163,93 +163,6 @@ type();
 function generate() {
   document.getElementById("result").style.display = "block";
 }
-</script>
-
-</body>
-</html>
-    input {
-      width: 90%;
-      padding: 15px;
-      border-radius: 10px;
-      border: none;
-      font-size: 16px;
-      outline: none;
-      margin-bottom: 20px;
-    }
-
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 0 20px;
-    }
-
-    button {
-      padding: 20px;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      background: linear-gradient(135deg, #6a5cff, #8f44fd);
-      color: white;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .upgrade {
-      margin-top: 30px;
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    .upgrade button {
-      margin-top: 10px;
-      background: #fff;
-      color: black;
-      padding: 10px 20px;
-      border-radius: 20px;
-    }
-
-  </style>
-</head>
-
-<body>
-
-<header>IND.AI</header>
-
-<div class="credits">🔥 5 Free Credits Left</div>
-
-<div class="main-box">
-  <input type="text" placeholder="Aaj kya banana hai? (e.g. logo, video, website)">
-</div>
-
-<div class="buttons">
-  <button onclick="useCredit()">🎨 Create Image</button>
-  <button onclick="useCredit()">🎬 Create Video</button>
-  <button onclick="useCredit()">🌐 Create Website</button>
-  <button onclick="useCredit()">🤖 Ask AI</button>
-</div>
-
-<div class="upgrade">
-  Need more? Upgrade to Premium 🚀 <br>
-  <button>Upgrade</button>
-</div>
-
-<script>
-  let credits = 5;
-
-  function useCredit() {
-    if (credits > 0) {
-      credits--;
-      document.querySelector('.credits').innerText = `🔥 ${credits} Free Credits Left`;
-      alert("Feature coming soon 😎");
-    } else {
-      alert("No credits left! Upgrade to premium 🚀");
-    }
-  }
 </script>
 
 </body>
