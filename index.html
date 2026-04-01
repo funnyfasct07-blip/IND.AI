@@ -9,22 +9,32 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0b0b0f;
+  background: radial-gradient(circle at top, #1a1a2e, #0b0b0f);
   color: white;
   text-align: center;
+  overflow-x: hidden;
 }
 
-/* HEADER */
+/* glow background */
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: purple;
+  filter: blur(200px);
+  top: -100px;
+  left: -100px;
+  opacity: 0.3;
+}
+
 header {
   padding: 20px;
   font-size: 28px;
   font-weight: bold;
-  letter-spacing: 2px;
 }
 
-/* HERO */
 .hero {
-  margin-top: 20px;
   font-size: 22px;
   color: #aaa;
 }
@@ -34,7 +44,6 @@ header {
   font-weight: bold;
 }
 
-/* CREDITS */
 .credits {
   background: #151520;
   display: inline-block;
@@ -43,7 +52,6 @@ header {
   margin: 20px 0;
 }
 
-/* INPUT */
 input {
   width: 80%;
   padding: 15px;
@@ -52,7 +60,6 @@ input {
   margin-bottom: 20px;
 }
 
-/* BUTTONS */
 .buttons {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -61,48 +68,43 @@ input {
 }
 
 button {
-  padding: 20px;
+  padding: 18px;
   border-radius: 12px;
   border: none;
   background: linear-gradient(135deg, #6a5cff, #8f44fd);
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
 }
 
-button:hover {
-  transform: scale(1.05);
+.preview {
+  padding: 20px;
 }
 
-/* RESULT BOX */
+.preview img, .preview video {
+  width: 45%;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+/* result */
 .result {
-  margin-top: 20px;
-  padding: 20px;
   display: none;
+  padding: 20px;
 }
 
 .fake-box {
   background: #151520;
-  padding: 30px;
-  border-radius: 15px;
-  animation: fadeIn 1s ease;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-/* FOOTER */
 footer {
   margin-top: 40px;
   padding: 20px;
-  font-size: 14px;
   color: #aaa;
 }
-
-/* ANIMATION */
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
 </style>
-
 </head>
 
 <body>
@@ -110,7 +112,7 @@ footer {
 <header>IND.AI</header>
 
 <div class="hero">
-  Create <span class="typing" id="typing"></span>
+  Create <span id="typing" class="typing"></span>
 </div>
 
 <div class="credits">🔥 5 Free Credits Left</div>
@@ -122,46 +124,59 @@ footer {
   <button onclick="generate()">🎬 Video</button>
   <button onclick="generate()">🌐 Website</button>
   <button onclick="generate()">🤖 Ask AI</button>
+  <button onclick="generate()">🧑‍🎭 Face Change</button>
+  <button onclick="generate()">🎞 Image → Video</button>
+</div>
+
+<!-- PREVIEW -->
+<div class="preview">
+  <h3>✨ AI Creations</h3>
+  
+  <img src="https://picsum.photos/300/200?1">
+  <img src="https://picsum.photos/300/200?2">
+  <img src="https://picsum.photos/300/200?3">
+  <img src="https://picsum.photos/300/200?4">
+
+  <video controls src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+  <video controls src="https://www.w3schools.com/html/movie.mp4"></video>
 </div>
 
 <div class="result" id="result">
   <div class="fake-box">
-    ⚡ AI is generating your result... <br><br>
-    🎉 Done! (Preview coming soon)
+    ⚡ AI generating... 🎬
   </div>
 </div>
 
 <footer>
   👤 Shrikunj Gondaliya <br>
-  📧 yourmail@gmail.com <br>
-  📱 +91 0000000000 <br><br>
+  📧 shrigondaliya@gmail.com <br>
+  📱 7861011533 <br><br>
   © 2026 IND.AI
 </footer>
 
 <script>
-// typing animation
 const words = ["Images", "Videos", "Websites", "Logos"];
-let i = 0, j = 0, current = "", isDeleting = false;
+let i=0, j=0, current="", isDeleting=false;
 
-function type() {
+function type(){
   current = words[i];
-  document.getElementById("typing").innerText = current.substring(0, j);
+  document.getElementById("typing").innerText = current.substring(0,j);
 
-  if (!isDeleting && j < current.length) {
+  if(!isDeleting && j<current.length){
     j++;
-  } else if (isDeleting && j > 0) {
+  } else if(isDeleting && j>0){
     j--;
   } else {
     isDeleting = !isDeleting;
-    if (!isDeleting) i = (i + 1) % words.length;
+    if(!isDeleting) i=(i+1)%words.length;
   }
-  setTimeout(type, 100);
+
+  setTimeout(type, 200); // slow animation
 }
 type();
 
-// fake generate animation
-function generate() {
-  document.getElementById("result").style.display = "block";
+function generate(){
+  document.getElementById("result").style.display="block";
 }
 </script>
 
