@@ -63,6 +63,42 @@ body {
   align-items: center;
 }
 
+/* 🔥 PREMIUM TEXT */
+.hero h2 {
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+
+  background: linear-gradient(90deg, #ffffff, #ff00cc, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 0 10px rgba(255,255,255,0.8),
+               0 0 20px rgba(255,0,200,0.7),
+               0 0 30px rgba(0,255,255,0.7);
+
+  animation: glowText 3s infinite alternate;
+
+  padding: 5px 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* Glow Animation */
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 5px #fff,
+                 0 0 10px #ff00cc,
+                 0 0 15px #00ffff;
+  }
+  100% {
+    text-shadow: 0 0 20px #fff,
+                 0 0 30px #ff00cc,
+                 0 0 40px #00ffff;
+  }
+}
+
 /* GLASS BOX */
 .box {
   width: 95%;
@@ -101,7 +137,7 @@ input {
 .generate {
   margin-top: 12px;
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border-radius: 12px;
   border: none;
   font-size: 16px;
