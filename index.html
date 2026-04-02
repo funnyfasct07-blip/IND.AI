@@ -16,7 +16,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: #000;
   color: white;
-  overflow-x: hidden;
 }
 
 /* NAV */
@@ -52,6 +51,48 @@ body {
   border-bottom: 1px solid #222;
 }
 
+/* LOGIN BUTTON */
+.login-btn {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#ff00cc,#3333ff);
+  text-align: center;
+  cursor: pointer;
+}
+
+/* LOGIN POPUP */
+.login-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 20px;
+  border-radius: 15px;
+  display: none;
+  width: 90%;
+  max-width: 300px;
+  z-index: 2000;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg,#ff00cc,#3333ff);
+  color: white;
+}
+
 /* HERO */
 .hero {
   width: 100%;
@@ -63,65 +104,40 @@ body {
   align-items: center;
 }
 
-/* 🔥 PREMIUM TEXT */
+/* TEXT */
 .hero h2 {
   font-size: 34px;
-  font-weight: bold;
-  text-align: center;
-
-  background: linear-gradient(90deg, #ffffff, #ff00cc, #00ffff);
+  background: linear-gradient(90deg, #fff, #ff00cc, #00ffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  text-shadow: 0 0 10px rgba(255,255,255,0.8),
-               0 0 20px rgba(255,0,200,0.7),
-               0 0 30px rgba(0,255,255,0.7);
-
-  animation: glowText 3s infinite alternate;
-
-  padding: 5px 15px;
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  background-color: rgba(0,0,0,0.3);
+  animation: glow 3s infinite alternate;
 }
 
-/* Glow Animation */
-@keyframes glowText {
-  0% {
-    text-shadow: 0 0 5px #fff,
-                 0 0 10px #ff00cc,
-                 0 0 15px #00ffff;
-  }
-  100% {
-    text-shadow: 0 0 20px #fff,
-                 0 0 30px #ff00cc,
-                 0 0 40px #00ffff;
-  }
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff00cc; }
+  to { text-shadow: 0 0 25px #00ffff; }
 }
 
-/* GLASS BOX */
+/* BOX */
 .box {
   width: 95%;
   max-width: 420px;
-  backdrop-filter: blur(20px);
   background: rgba(0,0,0,0.6);
   padding: 15px;
   border-radius: 20px;
 }
 
-/* INPUT */
 input {
   width: 100%;
   padding: 12px;
   border-radius: 10px;
   border: none;
-  margin-bottom: 10px;
 }
 
-/* TOGGLE */
 .toggle {
   display: flex;
   gap: 5px;
+  margin-top: 10px;
 }
 
 .toggle button {
@@ -133,24 +149,15 @@ input {
   color: white;
 }
 
-/* GENERATE BUTTON */
 .generate {
   margin-top: 12px;
   width: 100%;
   padding: 14px;
   border-radius: 12px;
   border: none;
-  font-size: 16px;
   font-weight: bold;
-  color: white;
   background: linear-gradient(90deg,#ff00cc,#3333ff);
-  box-shadow: 0 0 15px rgba(255,0,200,0.6);
-  transition: 0.3s;
-}
-
-.generate:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(255,0,200,1);
+  color: white;
 }
 
 /* TOOLS */
@@ -187,7 +194,6 @@ footer {
   color: #aaa;
 }
 </style>
-
 </head>
 
 <body>
@@ -206,6 +212,17 @@ footer {
   <a href="#">🎤 Voice</a>
   <a href="#">🧑‍🎭 Face Swap</a>
   <a href="#">💎 Premium</a>
+
+  <!-- LOGIN BUTTON -->
+  <div class="login-btn" onclick="openLogin()">Login</div>
+</div>
+
+<!-- LOGIN POPUP -->
+<div class="login-box" id="loginBox">
+  <h3>Login</h3>
+  <input placeholder="Email">
+  <input placeholder="Password" type="password">
+  <button>Login</button>
 </div>
 
 <!-- HERO -->
@@ -253,7 +270,11 @@ function toggleMenu(){
   let menu = document.getElementById("menu");
   menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
 }
+
+function openLogin(){
+  document.getElementById("loginBox").style.display = "block";
+}
 </script>
 
 </body>
-</html>
+  </html>
