@@ -2,22 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>IND.AI</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IND.AI</title>
 
 <style>
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
   background: #000;
   color: white;
+  overflow-x: hidden;
 }
 
 /* NAV */
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 15px 20px;
 }
 
 .menu {
@@ -28,26 +34,29 @@ body {
 /* SIDEBAR */
 .sidebar {
   position: fixed;
-  left: -250px;
+  left: -260px;
   top: 0;
-  width: 250px;
+  width: 260px;
   height: 100%;
   background: #111;
   padding: 20px;
   transition: 0.3s;
+  z-index: 1000;
 }
 
 .sidebar a {
   display: block;
-  padding: 10px 0;
+  padding: 12px 0;
   color: white;
   text-decoration: none;
+  border-bottom: 1px solid #222;
 }
 
 /* HERO */
 .hero {
-  background: url('https://picsum.photos/800/600?blur=3') center/cover;
-  height: 300px;
+  width: 100%;
+  height: 320px;
+  background: url('https://picsum.photos/800/600?blur=3') center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,31 +65,31 @@ body {
 
 /* GLASS BOX */
 .box {
+  width: 95%;
+  max-width: 420px;
   backdrop-filter: blur(20px);
   background: rgba(0,0,0,0.6);
   padding: 15px;
   border-radius: 20px;
-  width: 90%;
-  max-width: 400px;
 }
 
+/* INPUT */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border-radius: 10px;
   border: none;
+  margin-bottom: 10px;
 }
 
 /* TOGGLE */
 .toggle {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  gap: 5px;
 }
 
 .toggle button {
   flex: 1;
-  margin: 2px;
   padding: 10px;
   border-radius: 10px;
   border: none;
@@ -88,9 +97,24 @@ input {
   color: white;
 }
 
+/* GENERATE BUTTON */
 .generate {
-  margin-top: 10px;
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
   background: linear-gradient(90deg,#ff00cc,#3333ff);
+  box-shadow: 0 0 15px rgba(255,0,200,0.6);
+  transition: 0.3s;
+}
+
+.generate:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,0,200,1);
 }
 
 /* TOOLS */
@@ -105,7 +129,7 @@ input {
   background: #111;
   padding: 15px;
   border-radius: 15px;
-  min-width: 80px;
+  min-width: 90px;
   text-align: center;
 }
 
@@ -116,8 +140,8 @@ input {
 
 .gallery img {
   width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 
 /* FOOTER */
@@ -127,6 +151,7 @@ footer {
   color: #aaa;
 }
 </style>
+
 </head>
 
 <body>
@@ -139,12 +164,12 @@ footer {
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="menu">
-  <a href="#">Home</a>
-  <a href="#">Image</a>
-  <a href="#">Video</a>
-  <a href="#">Voice</a>
-  <a href="#">Face Swap</a>
-  <a href="#">Premium</a>
+  <a href="#">🏠 Home</a>
+  <a href="#">🎨 Image</a>
+  <a href="#">🎬 Video</a>
+  <a href="#">🎤 Voice</a>
+  <a href="#">🧑‍🎭 Face Swap</a>
+  <a href="#">💎 Premium</a>
 </div>
 
 <!-- HERO -->
@@ -190,7 +215,7 @@ footer {
 <script>
 function toggleMenu(){
   let menu = document.getElementById("menu");
-  menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
+  menu.style.left = menu.style.left === "0px" ? "-260px" : "0px";
 }
 </script>
 
